@@ -6,7 +6,7 @@ const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
 module.exports = {
     name: 'server',
     target: 'node',
-    devtool: 'eval',
+    devtool: 'source-map',
     entry: [
         path.resolve(__dirname, '../server/render.js')
     ],

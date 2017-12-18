@@ -4,19 +4,26 @@
   "description": "React Server Side rendering framework",
   "main": "server/index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=development node server/index.js",
+    "start": "cross-env-shell NODE_ENV=development node $NODE_DEBUG_OPTION server/index",
     "test": "jest"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.17.1",
+    "babel-polyfill": "^6.26.0",
     "cross-env": "^5.1.1",
     "express": "^4.16.2",
     "express-no-favicons": "^0.0.1",
+    "history": "^4.7.2",
+    "prop-types": "^15.6.0",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
+    "react-redux": "^5.0.6",
     "react-router-config": "^1.0.0-beta.4",
     "react-router-dom": "^4.2.2",
+    "react-router-redux": "^5.0.0-alpha.8",
+    "redux": "^3.7.2",
     "webpack-dev-middleware": "^1.12.2"
   },
   "devDependencies": {

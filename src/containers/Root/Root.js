@@ -7,7 +7,6 @@ class Root extends React.Component {
     render() {
         return (
             <div className="root-container">
-                <h1>This is a Root Container</h1>
                 {renderRoutes(this.props.route.routes)}
             </div>
         );

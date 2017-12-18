@@ -1,6 +1,6 @@
-import Root from './containers/Root';
-import Home from './components/Home';
-import ItemDetail from './components/ItemDetail';
+import Root from './containers/Root/Root';
+import Home from './containers/Home/Home';
+import { fetchItems } from './state/modules/items';
 
 export const routes = [
     {
@@ -9,11 +9,10 @@ export const routes = [
             {
                 path: '/',
                 exact: true,
-                component: Home
-            },
-            {
-                path: '/item/:id',
-                component: ItemDetail
+                component: Home,
+                loadData: async (match, dispatch) => {
+                    return fetchItems(dispatch);
+                }
             }
         ]
     }
