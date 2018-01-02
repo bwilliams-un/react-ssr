@@ -8,6 +8,7 @@ import { Provider as ReduxProvider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import configureStore from './state/configureStore';
 import createHistory from 'history/createBrowserHistory';
+import ErrorBoundary from './components/ErrorBoundary';
 
 // Create a history object, define initial state from the server if provided
 const history = createHistory();
@@ -26,11 +27,13 @@ const render = () =>
     // Mismatches will cause a re-render and lose you the benefits of SSR
     ReactDOM.hydrate(
         <AppContainer>
-            <ReduxProvider store={store}>
-                <ConnectedRouter history={history}>
-                    {renderRoutes(routes)}
-                </ConnectedRouter>
-            </ReduxProvider>
+            <ErrorBoundary message={'Something went horribly wrong!'}>
+                <ReduxProvider store={store}>
+                    <ConnectedRouter history={history}>
+                        {renderRoutes(routes)}
+                    </ConnectedRouter>
+                </ReduxProvider>
+            </ErrorBoundary>
         </AppContainer>,
         document.getElementById('root')
     );

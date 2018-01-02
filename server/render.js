@@ -9,7 +9,6 @@ import configureStore from '../src/state/configureStore';
 import createHistory from 'history/createMemoryHistory';
 import { parsePath } from 'history/PathUtils';
 
-// NOTE: We only pass Dispatch because we're not using a redux async module
 const loadRouteData = (location, dispatch) => {
     // Get the route branch for the current location
     const routeBranch = matchRoutes(routes, location);
