@@ -74,6 +74,7 @@ export default ({ clientStats }) => async (req, res, next) => {
           window.__INITIAL_STATE__ = ${JSON.stringify(store.getState()).replace(/</g, '\\\u003c')}
         </script>
         <script src="/static/client/bootstrap.js"></script>
+        <script src="/static/client/vendor.js"></script>
         ${
             // Output script elements for each javascript webpack chunk 
             assets.filter(path => path.endsWith('.js'))

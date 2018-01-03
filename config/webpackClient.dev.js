@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const WriteFilePlugin = require('write-file-webpack-plugin');
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
     name: 'client',
@@ -50,6 +51,13 @@ module.exports = {
             test: /^(?!.*(hot)).*/
         }),
         new ExtractCssChunks(),
+        // Vendor package of node_modules
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor',
+            minChunks: (module, count) => {
+                return module.context && /node_modules/.test(module.context);
+            }
+        }),
         new webpack.optimize.CommonsChunkPlugin({
             names: ['bootstrap'], // webpack bootstrap code first
             filename: '[name].js',
@@ -61,6 +69,11 @@ module.exports = {
             'process.env': {
                 NODE_ENV: JSON.stringify('development')
             }
-        })
+        }),
+        new BundleAnalyzerPlugin({
+            analyzerMode: 'static',
+            reportFilename: 'bundle-analysis.html',
+            openAnalyzer: false
+        }),
     ]
 };

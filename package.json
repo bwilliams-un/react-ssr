@@ -5,6 +5,7 @@
   "main": "server/index.js",
   "scripts": {
     "start": "cross-env-shell NODE_ENV=development node $NODE_DEBUG_OPTION server/index",
+    "build-client-dev": "webpack -d --config config/webpackClient.dev.js",
     "test": "jest"
   },
   "author": "",
@@ -26,6 +27,7 @@
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.8",
     "redux": "^3.7.2",
+    "webpack-bundle-analyzer": "^2.9.1",
     "webpack-dev-middleware": "^1.12.2"
   },
   "devDependencies": {
