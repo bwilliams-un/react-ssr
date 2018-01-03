@@ -5,7 +5,11 @@ export const ITEMS_REQUESTED = 'ITEMS_REQUESTED';
 export const ITEMS_SUCCESS = 'ITEMS_SUCCESS';
 export const ITEMS_FAILED = 'ITEMS_FAILED';
 
-export const fetchItems = () => async (dispatch) => {
+export const fetchItems = () => async (dispatch, getState) => {
+    if (isFetching(getState())) {
+        return Promise.resolve();
+    }
+
     try {
         dispatch({
             type: ITEMS_REQUESTED
@@ -23,6 +27,9 @@ export const fetchItems = () => async (dispatch) => {
     }
 };
 
+export const isFetching = (state) => {
+    return state.isLoading;
+};
 
 const initialState = {
     isLoading: true,
