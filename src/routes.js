@@ -11,7 +11,7 @@ export const routes = [
                 exact: true,
                 component: Home,
                 loadData: async (match, dispatch) => {
-                    return fetchItems(dispatch);
+                    return dispatch(fetchItems());
                 }
             }
         ]
