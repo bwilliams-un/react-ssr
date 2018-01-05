@@ -16,9 +16,11 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-polyfill": "^6.26.0",
     "cross-env": "^5.1.1",
+    "dotenv": "^4.0.0",
     "express": "^4.16.2",
     "express-no-favicons": "^0.0.1",
     "history": "^4.7.2",
+    "jsonwebtoken": "^8.1.0",
     "prop-types": "^15.6.0",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
@@ -27,6 +29,7 @@
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.8",
     "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
     "webpack-bundle-analyzer": "^2.9.1",
     "webpack-dev-middleware": "^1.12.2"
   },
@@ -53,6 +56,7 @@
     "write-file-webpack-plugin": "^4.2.0"
   },
   "jest": {
-    "setupTestFrameworkScriptFile": "<rootDir>/config/testFramework"
+    "setupTestFrameworkScriptFile": "<rootDir>/config/testFramework",
+    "resetModules": true
   }
 }

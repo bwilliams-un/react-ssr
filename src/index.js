@@ -2,12 +2,13 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import AppContainer from 'react-hot-loader/lib/AppContainer';
-import { renderRoutes } from 'react-router-config';
-import { routes } from './routes';
 import { Provider as ReduxProvider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import configureStore from './state/configureStore';
 import createHistory from 'history/createBrowserHistory';
+import { renderRoutes } from 'react-router-config';
+import { routes } from './routes';
+
 import ErrorBoundary from './components/ErrorBoundary';
 
 // Create a history object, define initial state from the server if provided

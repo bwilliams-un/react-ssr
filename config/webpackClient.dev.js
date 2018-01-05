@@ -73,7 +73,8 @@ module.exports = {
         new BundleAnalyzerPlugin({
             analyzerMode: 'static',
             reportFilename: 'bundle-analysis.html',
-            openAnalyzer: false
+            openAnalyzer: false,
+            logLevel: 'silent'
         }),
     ]
 };

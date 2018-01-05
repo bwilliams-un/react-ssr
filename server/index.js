@@ -2,9 +2,11 @@ const fs = require('fs');
 const path = require('path');
 
 require('babel-polyfill');
+require('dotenv').config();
 
 const express = require('express');
 const noFavIcon = require('express-no-favicons');
+const bodyParser =require('body-parser');
 
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
@@ -18,6 +20,9 @@ const APP_PORT = process.env.PORT || 8080;
 
 const app = express();
 app.use(noFavIcon());
+
+// assume all body content on api requests is content-type application/json
+app.use('/api', bodyParser.json());
 
 // mount API endpoints (ideally should be a separate service)
 const apiPath= path.join(__dirname, './api');

@@ -9,6 +9,8 @@ import configureStore from '../src/state/configureStore';
 import createHistory from 'history/createMemoryHistory';
 import { parsePath } from 'history/PathUtils';
 
+import ErrorBoundary from '../src/components/ErrorBoundary';
+
 const loadRouteData = (location, dispatch) => {
     // Get the route branch for the current location
     const routeBranch = matchRoutes(routes, location);
@@ -40,15 +42,18 @@ export default ({ clientStats }) => async (req, res, next) => {
     try {
         await loadRouteData(initialLocation.pathname, store.dispatch);
     } catch (e) {
+        console.log("loadRouteData", e);
         next(e);
     }
 
     const app = ReactDOM.renderToString(
-        <ReduxProvider store={store}>
-            <ConnectedRouter history={history}>
-                {renderRoutes(routes)}
-            </ConnectedRouter>
-        </ReduxProvider>
+        <ErrorBoundary message={'Something went horribly wrong!'}>
+            <ReduxProvider store={store}>
+                <ConnectedRouter history={history}>
+                    {renderRoutes(routes)}
+                </ConnectedRouter>
+            </ReduxProvider>
+        </ErrorBoundary>
     );
     const assets = Array.isArray(clientStats.assetsByChunkName.main) ? clientStats.assetsByChunkName.main : [clientStats.assetsByChunkName.main]; // if it's not an array, make it one
 
