@@ -1,7 +1,9 @@
 import Root from './containers/Root/Root';
 import Home from './containers/Home/Home';
 import Login from './containers/Login/Login';
+import User from './containers/User/User';
 import { fetchItems } from './state/modules/items';
+import { withAuthentication } from './containers/Auth';
 
 export const routes = [
     {
@@ -18,6 +20,10 @@ export const routes = [
             {
                 path: '/login',
                 component: Login
+            },
+            {
+                path: '/user',
+                component: withAuthentication(User)
             }
         ]
     }
